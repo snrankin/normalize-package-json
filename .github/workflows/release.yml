@@ -39,7 +39,9 @@ jobs:
       - name: Build
         if: success()
         run: npm run build --if-present
-      - run: npm test
+      - name: Test
+        if: success()
+        run: npm test
       - name: Run Code Coverage
       - uses: codecov/codecov-action@v3.1.0
         with:
@@ -54,7 +56,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-      - run: echo ${{ steps.semantic.outputs.release-version }}
-      - run: echo "$OUTPUTS"
-        env:
           OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
+        run: echo ${{ steps.semantic.outputs.release-version }} && echo "$OUTPUTS"
