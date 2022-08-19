@@ -53,5 +53,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-          OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
+      - name: Show Semantic Release Results
         run: echo ${{ steps.semantic.outputs.release-version }} && echo "$OUTPUTS"
+        env:
+          OUTPUTS: ${{ toJson(steps.semantic.outputs) }}
