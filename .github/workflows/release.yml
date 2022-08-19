@@ -15,29 +15,7 @@ on:
     types: [created]
 
 jobs:
-  test:
-    name: Test on node ${{ matrix.node }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: [14.x, 16.x, 18.x]
-        os:
-          - ubuntu-latest
-    steps:
-      - name: Preserve line endings
-        run: git config --global core.autocrlf false
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Install & test/cover
-        run: npm cit
-        env:
-          CI: true
   release:
-    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: write
