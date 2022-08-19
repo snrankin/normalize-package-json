@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": false,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/ewww": true,
+			"**/languages": true,
+			"**/node_modules": false,
+			"**/twenty*": true,
+			"**/uploads": true,
+			"**/wp-snapshots": true
+		},
+		"explorerExclude.backup": {}
+	}
+}
