@@ -1,32 +1,54 @@
 module.exports = {
-	root: true,
 	parser: '@typescript-eslint/parser',
-	plugins: ['@typescript-eslint', 'node', 'prettier'],
+	plugins: ['@typescript-eslint'],
+	root: true,
+	// root: true,
+	// parser: '@typescript-eslint/parser',
 	parserOptions: {
 		tsconfigRootDir: __dirname,
-		project: ['./tsconfig.json'],
+		project: './tsconfig.json',
+		ecmaVersion: 'es2021',
+	},
+	env: {
+		node: true,
+		commonjs: true,
+		es2021: true,
 	},
 	extends: [
 		'eslint:recommended',
-		'plugin:node/recommended',
-		'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		// 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		// 'standard-with-typescript',
+		'plugin:import/recommended',
+		'plugin:import/typescript',
+		// 'plugin:promise/recommended',
+		'plugin:n/recommended',
 		'plugin:prettier/recommended',
 	],
+	plugins: ['@typescript-eslint', 'import', 'n'],
 	rules: {
-		'prettier/prettier': 'warn',
-		'node/no-missing-import': 'off',
-		'node/no-empty-function': 'off',
-		'node/no-unsupported-features/es-syntax': 'off',
-		'node/no-missing-require': 'off',
-		'node/shebang': 'off',
-		'@typescript-eslint/no-use-before-define': 'off',
-		quotes: ['warn', 'single', { avoidEscape: true }],
-		'node/no-unpublished-import': 'off',
-		'@typescript-eslint/no-unsafe-assignment': 'off',
-		'@typescript-eslint/no-var-requires': 'off',
-		'@typescript-eslint/ban-ts-comment': 'off',
-		'@typescript-eslint/no-explicit-any': 'off',
+		'import/no-unresolved': 'error',
+		'n/no-unsupported-features/es-syntax': [
+			'error',
+			{
+				version: '>=12.0.0',
+				ignores: [],
+			},
+		],
+		'n/shebang': 'error',
+	},
+	settings: {
+		node: {
+			convertPath: [
+				{
+					include: ['src/**/*.ts'],
+					exclude: ['**/*.spec.js'],
+					replace: ['^src/(.+)$', 'lib/$1'],
+				},
+			],
+		},
+		'import/parsers': {
+			'@typescript-eslint/parser': ['.ts', '.tsx'],
+		},
 	},
 };

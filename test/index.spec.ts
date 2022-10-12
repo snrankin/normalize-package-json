@@ -1,13 +1,11 @@
-import { myPackage } from '../src';
+import { expect } from 'chai';
 
-describe('index', () => {
-  describe('myPackage', () => {
-    it('should return a string containing the message', () => {
-      const message = 'Hello';
+import { hello } from '../src/hello';
 
-      const result = myPackage(message);
-
-      expect(result).toMatch(message);
-    });
-  });
+describe('Test Example', () => {
+	it('should say "Hello World!"', () => {
+		const actual = hello('World');
+		const expected = 'Hello World!';
+		expect(actual).to.equal(expected);
+	});
 });

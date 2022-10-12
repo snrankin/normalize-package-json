@@ -1,1 +1,3 @@
-export const myPackage = (taco = ''): string => `${taco} from my package`;
+import { hello } from './hello';
+
+console.log(hello('World'));

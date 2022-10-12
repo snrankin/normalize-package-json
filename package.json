@@ -1,97 +1,109 @@
 {
-    "name": "normalize-package-json",
-    "version": "1.0.0",
+    "author": {
+        "email": "samrankin.dev@gmail.com",
+        "name": "Sam Rankin",
+        "url": "https://github.com/snrankin"
+    },
+    "bin": "lib/index.js",
+    "bugs": {
+        "url": "https://github.com/snrankin/normalize-package-json/issues"
+    },
+    "bundleDependencies": [
+        "fs-extra",
+        "normalize-package-data"
+    ],
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/@ryansonshine/cz-conventional-changelog"
+        }
+    },
+    "dependencies": {
+        "fs-extra": "^10.1.0",
+        "normalize-package-data": "^4.0.1"
+    },
     "description": "A small tool to normalize package.json files",
-    "main": "lib/",
-    "directories": {
-        "test": "test",
-        "lib": "lib"
+    "devDependencies": {
+        "@ryansonshine/cz-conventional-changelog": "^3.3.4",
+        "@tsconfig/node16": "^1.0.3",
+        "@tsconfig/recommended": "^1.0.1",
+        "@types/chai": "^4.3.3",
+        "@types/jest": "^28.1.7",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "^18.7.7",
+        "@typescript-eslint/eslint-plugin": "^5.33.1",
+        "@typescript-eslint/parser": "^5.33.1",
+        "chai": "^4.3.6",
+        "eslint": "^8.22.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-config-standard-with-typescript": "^22.0.0",
+        "eslint-formatter-pretty": "^4.1.0",
+        "eslint-import-resolver-typescript": "^3.4.2",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.2.4",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.1",
+        "jest": "^28.1.3",
+        "lint-staged": "^13.0.3",
+        "mocha": "^10.0.0",
+        "nodemon": "^2.0.19",
+        "prettier": "^2.7.1",
+        "rimraf": "^3.0.2",
+        "semantic-release": "^19.0.3",
+        "ts-jest": "^28.0.8",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.1.0",
+        "tslib": "^2.4.0",
+        "ttypescript": "^1.5.13",
+        "typescript": "^4.7.4",
+        "typescript-transform-paths": "^3.3.1"
+    },
+    "engines": {
+        "node": ">=14",
+        "npm": ">= 8.0.0",
+        "yarn": "^1.20.0"
     },
     "files": [
-        "lib/",
-        "esm/",
-        "bin/"
+        "lib/"
     ],
-    "scripts": {
-        "build": "tsc",
-        "clean": "rm -rf ./lib/",
-        "cm": "cz",
-        "lint": "eslint ./src/ --color -f pretty --cache --fix",
-        "prepare": "husky install",
-        "semantic-release": "semantic-release",
-        "gh-pages": "catalog build docs",
-        "gh-pages:deploy": "gh-pages -d docs/build",
-        "test": "jest  --coverage",
-        "test:watch": "jest --watch",
-        "test:lint": "eslint ./src/ --color -f pretty --cache",
-        "typecheck": "tsc --noEmit"
-    },
-    "publishConfig": {
-        "snrankin:registry": "https://npm.pkg.github.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/snrankin/normalize-package-json.git"
+    "homepage": "https://github.com/snrankin/normalize-package-json#readme",
+    "husky": {
+        "hooks": {
+            "post-commit": "git update-index --again",
+            "pre-commit": "lint-staged"
+        }
     },
     "keywords": [
         "normalize",
         "package.json",
         "utilities"
     ],
-    "author": {
-        "name": "Sam Rankin",
-        "email": "samrankin.dev@gmail.com",
-        "url": "https://github.com/snrankin"
-    },
-    "engines": {
-        "node": ">=12.0"
-    },
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/snrankin/normalize-package-json/issues"
-    },
-    "homepage": "https://github.com/snrankin/normalize-package-json#readme",
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/@ryansonshine/cz-conventional-changelog"
-        }
-    },
     "lint-staged": {
-        "*.ts": "eslint --cache --cache-location .eslintcache --fix"
+        "*.ts": [
+            "eslint --color -f pretty --cache --cache-location .eslintcache --fix",
+            "git add"
+        ]
     },
-    "dependencies": {
-        "fs-extra": "^10.1.0",
-        "normalize-package-data": "^4.0.1"
+    "main": "lib/index.js",
+    "name": "normalize-package-json",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/snrankin/normalize-package-json.git"
     },
-    "devDependencies": {
-        "@jedmao/semantic-release-npm-github-config": "^1.0.9",
-        "@qiwi/semantic-release-gh-pages-plugin": "^5.2.3",
-        "@ryansonshine/commitizen": "^4.2.8",
-        "@ryansonshine/cz-conventional-changelog": "^3.3.4",
-        "@semantic-release/changelog": "^6.0.1",
-        "@semantic-release/commit-analyzer": "^9.0.2",
-        "@semantic-release/exec": "^6.0.3",
-        "@semantic-release/git": "^10.0.1",
-        "@semantic-release/github": "^8.0.5",
-        "@semantic-release/npm": "^9.0.1",
-        "@semantic-release/release-notes-generator": "^10.0.3",
-        "@types/jest": "^28.1.7",
-        "@types/node": "^18.7.6",
-        "@typescript-eslint/eslint-plugin": "^5.33.1",
-        "@typescript-eslint/parser": "^5.33.1",
-        "@userscripters/generate-readme": "^2.3.1",
-        "eslint": "^8.22.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-formatter-pretty": "^4.1.0",
-        "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "husky": "^8.0.1",
-        "jest": "^28.1.3",
-        "lint-staged": "^13.0.3",
-        "prettier": "^2.7.1",
-        "semantic-release": "^19.0.3",
-        "ts-jest": "^28.0.8",
-        "ts-node": "^10.9.1",
-        "typescript": "^4.7.4"
-    }
+    "scripts": {
+        "build": "ttsc",
+        "clean": "rm -rf ./lib/",
+        "cm": "cz",
+        "lint": "eslint . --ext .ts --color -f pretty --cache --fix",
+        "prepare": "husky install",
+        "semantic-release": "semantic-release",
+        "test:lint": "eslint . --ext .ts --color -f pretty --cache",
+        "test:watch": "jest --watch",
+        "typecheck": "ttsc --noEmit",
+        "start": "yarn run start:dev",
+        "test": "mocha -r ts-node/register --config .mocharc.json --watch test/**/*.test.ts",
+        "start:dev": "nodemon --config .nodemonrc.json src/index.ts",
+        "start:prod": "node dist/index.js"
+    },
+    "version": "1.0.0"
 }

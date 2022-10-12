@@ -19,6 +19,8 @@
 			"**/uploads": true,
 			"**/wp-snapshots": true
 		},
-		"explorerExclude.backup": {}
+		"explorerExclude.backup": {},
+		"eslint.debug": true,
+		"eslint.runtime": "/Users/samrankin/Development/normalize-package-json/node_modules/.bin/eslint"
 	}
 }

@@ -1,6 +1,24 @@
 {
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "arrowParens": "avoid",
-  "printWidth": 80
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"proseWrap": "never",
+	"quoteProps": "as-needed",
+	"bracketSpacing": true,
+	"printWidth": 80,
+	"overrides": [
+		{
+			"files": ["*.yml", "*.neon"],
+			"options": {
+				"tabWidth": 2,
+				"tabs": false,
+				"parser": "yaml"
+			}
+		},
+		{
+			"files": [".*rc"],
+			"options": {
+				"parser": "json"
+			}
+		}
+	]
 }
